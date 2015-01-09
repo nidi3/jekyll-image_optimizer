@@ -12,4 +12,4 @@ The following options for `_config.yml` are available:
   - `raw_images` the directory containing the unoptimized images, default is `img/raw`.
   - `opt_images` the directory containing the optimized images, default is `img/opt`.
   - `images_link` the name of the symbolic link pointing to `opt_images`, default is `images`.
-  - `image_geometry` the size all images should be, is an ImageMagick [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry), default is `800x800>`
+  - `image_geometry` the size all images should be, is an ImageMagick [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry), default is `800x800>`.
