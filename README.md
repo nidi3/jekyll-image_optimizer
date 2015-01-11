@@ -8,6 +8,7 @@ Install it with `gem install jekyll-image_optimizer`.
 Add this to your `plugins/ext.rb` file: `require 'jekyll/image_optimizer'`.
 
 The following options for `_config.yml` are available:
+
 Option | Description | Default value
 --- | --- | ---
 `raw_images` | the directory containing the unoptimized images | `img/raw`
