@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-image_optimizer'
-  s.version     = '1.0.0'
-  s.date        = '2015-01-09'
+  s.version     = '1.1.0'
+  s.date        = '2015-01-12'
   s.summary     = "A jekyll plugin to optimize images for the web"
   s.description = "The plugin reads all images in a directory and saves optimized versions of them in another directory."
   s.authors     = ["Stefan Niederhauser"]
