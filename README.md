@@ -8,12 +8,13 @@ Install it with `gem install jekyll-image_optimizer`.
 Add this to your `plugins/ext.rb` file: `require 'jekyll/image_optimizer'`.
 
 The following options for `_config.yml` are available:
-
-  - `raw_images` the directory containing the unoptimized images, default is `img/raw`.
-  - `opt_images` the directory containing the optimized images, default is `img/opt`.
-  - `images_link` the name of the symbolic link pointing to `opt_images`, default is `images`.
-  - `image_geometry` the size all images should be, is an ImageMagick [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry), may be an array, default is `800x800>`.
-  - `image_layout` the file containing the template for the `image` tag, default is `_layouts/image.html`.
+Option | Description | Default value
+--- | --- | ---
+`raw_images` | the directory containing the unoptimized images | `img/raw`
+`opt_images` | the directory containing the optimized images | `img/opt`
+`images_link` | the name of the symbolic link pointing to `opt_images` | `images`
+`image_geometry` | the size all images should be, is an ImageMagick [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry) and may be an array | `800x800>`
+`image_layout` | the file containing the template for the `image` tag | `_layouts/image.html`
 
 The plugin defines two liquid tags: `srcset` and `image`.
 To include an image with multiple resolutions (using [scrset](http://ericportis.com/posts/2014/srcset-sizes/)) into a post, do the following:
