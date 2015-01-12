@@ -2,8 +2,8 @@ require_relative 'synchronizer.rb'
 require 'RMagick'
 
 class ImageOptimizer < Synchronizer
-  def initialize(source_path, target_path)
-    super(source_path, target_path)
+  def initialize(source_path, target_path, use_hash)
+    super(source_path, target_path, use_hash)
   end
 
   def optimize_images(geometry)

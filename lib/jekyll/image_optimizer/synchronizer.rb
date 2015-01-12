@@ -1,7 +1,8 @@
 class Synchronizer
-  def initialize(source_path, target_path)
+  def initialize(source_path, target_path, use_hash)
     @source_path=source_path
     @target_path=target_path
+    @hash=ImageHash.new(use_hash)
   end
 
   def create_symlink(name, param)
@@ -31,11 +32,17 @@ class Synchronizer
 
   def synchronize_file(source, target, param)
     source_time = File.mtime(source)
-    if !File.file?(target) or File.mtime(target) != source_time
+    target_found=Dir[@hash.file_search_pattern(target)]
+    target=target_found[0] unless target_found.empty?
+    if !File.file?(target) or File.mtime(target) != source_time or !@hash.hash?(target)
+      target=@hash.without_hash(target)
       target_dir=File.dirname(target)
       Dir.mkdir(target_dir) unless File.directory? target_dir
       do_synchronize_file(source, target, param)
-      File.utime(source_time, source_time, target) if File.file?(target)
+      if File.file?(target)
+        target=@hash.with_hash(target)
+        File.utime(source_time, source_time, target)
+      end
     end
   end
 
@@ -60,10 +67,13 @@ class Synchronizer
     files_and_dirs_by_length=Dir["#{target_path}/**/*"].sort_by { |dir| File.file?(dir) ? ('a'+dir) : ('b'+(1000-dir.size).to_s) }
     for target in files_and_dirs_by_length
       source=target.sub(target_path, @source_path)
+      source=@hash.without_hash(source)
       if File.directory? target
         delete_dir(target) unless Dir.exists? source
       else
-        delete_file(target) unless File.file? source
+        unless File.file? source and File.mtime(source)==File.mtime(target)
+          delete_file(target)
+        end
       end
     end
   end
@@ -77,4 +87,5 @@ class Synchronizer
     puts "deleting #{file}"
     File.delete(file)
   end
+
 end

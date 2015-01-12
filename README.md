@@ -15,6 +15,7 @@ Option | Description | Default value
 `opt_images` | the directory containing the optimized images | `img/opt`
 `images_link` | the name of the symbolic link pointing to `opt_images` | `images`
 `image_geometry` | the size all images should be, is an ImageMagick [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry) and may be an array | `800x800>`
+`image_hash` | if the optimized image files should be appended with a hash to enable unlimited caching | `true`
 `image_layout` | the file containing the template for the `image` tag | `_layouts/image.html`
 
 The plugin defines two liquid tags: `srcset` and `image`.
