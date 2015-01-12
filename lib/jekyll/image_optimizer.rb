@@ -61,7 +61,7 @@ module Jekyll
 
     def initialize(tag_name, markup, tokens)
       super
-      if markup =~ /\s*(.*?)\s+(.*?)\s*/
+      if markup =~ /\s*(.+?)\s+([^\s]+)\s*/
         @dir = $1
         @index = $2
       end
