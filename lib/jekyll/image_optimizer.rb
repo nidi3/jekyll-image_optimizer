@@ -96,7 +96,7 @@ module Jekyll
     end
 
     def layout(context)
-      context['site']['image_layout'] || '_layouts/image.html'
+      '_layouts/' + (context['image']['layout'] || context['site']['image_layout'] || 'image.html')
     end
   end
 end
